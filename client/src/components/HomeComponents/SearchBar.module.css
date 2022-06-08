@@ -1,0 +1,33 @@
+.container{
+    position:relative;
+    margin: 2em;
+    width:1100px;
+    height: 3em;
+    /* border: 1px solid red; */
+}
+.input{
+    width:80em;
+    height: 3em;
+    background-color:rgb(159, 150, 150) ;
+    border: 1px solid rgb(46, 45, 45);
+    border-radius: 60px;
+    padding-left: 10px;    
+}
+.input:focus{
+    background-color: white;
+    border:1px solid white;
+}
+.button{
+    position:absolute;
+    height: 3em;
+    width: 5em;
+    right: 33px;
+    top:2px;
+    background-color: rgb(61, 61, 116);
+    border:0ch;
+    border-radius: 60px;
+    transition: all 400ms ease;
+}
+.button:hover{
+    background-color: rgb(35, 35, 95);
+}

@@ -10,6 +10,7 @@ import Rating from "./HomeComponents/Rating";
 import FilterGenre from "./HomeComponents/FilterGenre";
 import FilterCreated from "./HomeComponents/FilterCreated";
 import Buttons from "./HomeComponents/Buttons";
+import styles from './Home.module.css'
 
 export default function Home(){
 
@@ -38,15 +39,15 @@ export default function Home(){
     // console.log('genres(Home) :',genres)
     return(
         <div>
-            <h1>Home</h1>
-            <Link to='/Post'>Add a new game</Link>
-            <button onClick={e=>{e.preventDefault(); dispatch(getGames())}}>Reload games</button>
             <SearchBar/>
-            <Alphabetical/>
-            <Rating/>
-            <FilterGenre/>
-            <FilterCreated/>
-            <Buttons allGames={games.length} setPage={setPage} gamesPerPage={gamesPerPage}/>
+            <header className={styles.header}>
+             <Alphabetical/>
+             <Rating/>
+             <FilterGenre/>
+             <FilterCreated/>
+             <Link to='/Post'><button className={styles.createButton}>Create game</button></Link>
+             <button onClick={e=>{e.preventDefault(); dispatch(getGames())}} className={styles.reload}>Reload games</button>
+            </header>
             {
                 currentGames?.map(e=>{
                    return <Card 
@@ -58,7 +59,11 @@ export default function Home(){
                      key={e.id}
                     />
                 })
-            } 
+            }
+             <footer className={styles.footer}>
+            <h3 className={styles.more}> More games :</h3>
+             <Buttons allGames={games.length} setPage={setPage} gamesPerPage={gamesPerPage} className={styles.buttons}/>
+             </footer>
         </div>
     )
 }

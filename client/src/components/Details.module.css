@@ -1,0 +1,49 @@
+
+.container{
+    position:relative;
+    background-color: rgba(128, 128, 128, 0.779);
+    width: 78em;
+    min-height: 50em;
+    margin: 2em;
+    padding: 1em;
+}
+.title{
+    font-size: 300%;
+}
+.description{
+    background-color: rgba(87, 85, 85, 0.779);
+    padding: 1em;
+    width: 37em;
+    max-height: 20em;
+    float:right;
+    overflow:hidden;
+    transition: 500ms;
+}
+.description:hover{
+    max-height: 40em;
+}
+.img{
+    margin-left: 1em;
+    width: 600px;
+    max-height: 30em;
+    right:2em;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.356);
+}
+.rating{
+    font-size: 500%;
+}
+.home{
+    position: fixed;
+    top: 3em;
+    right:3em;
+    height: 3em;
+    width: 10em;
+    border-radius: 10px;
+    background-color: black;
+    color: gray;
+    font-size: large;
+    transition: all 400ms ease;
+}
+.home:hover{
+    color: yellow;
+}

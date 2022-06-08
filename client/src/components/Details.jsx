@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useDispatch,useSelector } from "react-redux";
 import { getDetails } from "../actions";
 import { Link } from "react-router-dom";
+import styles from './Details.module.css'
 
 export default function Details(){
     const id=useParams().id;
@@ -17,12 +18,24 @@ export default function Details(){
     console.log('gameDetails :',game)
     
     return(
-        <div>
-            <Link to='/Home'><button>Home</button></Link>
+        <div className={styles.container}>
+            <Link to='/Home'><button className={styles.home }>Home</button></Link>
             <div/>
-            <h1>{game.name}</h1>
-            <img src={game.image} alt="not found ):" width='300px' />
-            <div/>
+            <h1 className={styles.title}>{game.name}</h1>
+            {
+                game.image?<img src={game.image} className={styles.img}/>:<img src='https://www.lifeder.com/wp-content/uploads/2018/10/question-mark-2123967_640.jpg' className={styles.img}/>
+            }
+            <div className={styles.description}>
+            <h2>Description</h2>
+             <div dangerouslySetInnerHTML={{__html:game.description}}/>
+            </div>
+            
+            <label>Release date :</label>
+            <span>{game.released}</span>
+            <div>
+                <h2>Rating :</h2>
+                <span className={styles.rating}>{game.rating}</span>
+            </div>
             <label>Genres :</label>
             {
                 game.genres?.map(e=>{
@@ -34,15 +47,6 @@ export default function Details(){
                    return <span key={e}>{e.name} </span>
                 })
             }
-            <div/>
-            <label>Description :</label>
-            <div dangerouslySetInnerHTML={{__html:game.description}}/>
-            <div/>
-            <label>Release date :</label>
-            <span>{game.released}</span>
-            <div/>
-            <label>Rating :</label>
-            <span>{game.rating}</span>
             <div/>
             <label>Platforms : </label>
             {

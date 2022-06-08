@@ -1,6 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { filterByGenre } from "../../actions";
+import styles from './Select.module.css'
+
 export default function FilterGenre(){
 
     const genres=useSelector(state=>state.genres)
@@ -12,7 +14,7 @@ export default function FilterGenre(){
 
     return(
         <div>
-            <select onChange={e=>HandleChange(e)}>
+            <select onChange={e=>HandleChange(e)} className={styles.select}>
                 <option value="all">filter by genre (reset)</option>
                 {
                     genres.map(e=>{

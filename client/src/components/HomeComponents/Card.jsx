@@ -1,16 +1,22 @@
 import React from "react";
 import {Link} from 'react-router-dom'
+import styles from './Card.module.css'
+
 export default function Card({name,image,genres,Genres,id}){
     return(
-        <div>
-           <Link to={'/Home/'+id}> <h2>{name}</h2></Link>
+        <div className={styles.container}>
             {
-                genres?.map(e=>{return <p key={e}>{e}</p>})
+            image?<Link to={'/Home/'+id}><img src={image} className={styles.img}/></Link>:
+            <Link to={'/Home/'+id}><img src='https://www.lifeder.com/wp-content/uploads/2018/10/question-mark-2123967_640.jpg' className={styles.img}/></Link>
+            }
+           <Link to={'/Home/'+id}> <h3 className={styles.title}>{name}</h3></Link>
+            {
+                genres?.map(e=>{return <span key={e}>{e}  </span>})
             }
             {
-                Genres?.map(e=>{return <p key={e.id}>{e.name}</p>})
+                Genres?.map(e=>{return <span key={e.id}>{e.name}  </span>})
             }
-            <Link to={'/Home/'+id}><img src={image} alt="Not found :(" width='200px'/></Link>
+           
         </div>
     )
 }

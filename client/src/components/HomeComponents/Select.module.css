@@ -1,0 +1,15 @@
+
+.select{
+    position: relative;
+    background-color: rgb(61, 61, 116);
+    height: 40px;
+    width: 10em;
+    margin-top: 3em;
+    margin-left: 1em;
+    border-radius: 4px;
+    bottom: 20px;
+    transition: all 400ms ease;
+}
+.select:hover{
+    background-color:rgb(78, 78, 149) ;
+}

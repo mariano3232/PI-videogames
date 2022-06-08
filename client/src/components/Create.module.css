@@ -1,0 +1,59 @@
+.container{
+    position:relative;
+    background-color: rgba(64, 61, 61, 0.637);
+    top:10px;
+    border-radius: 5px;
+    height: fit-content;
+    width: 35em;
+    box-shadow: 3px 3px 3px black;
+    transition: 400ms
+}
+.input{
+    background-color: rgb(61, 61, 116);
+    height: 30px;
+    width: 10em;
+    border-radius: 5px;
+    transition: 400ms;
+}
+.input:focus{
+    background-color: rgba(255, 255, 255, 0.603);
+}
+.description{
+    background-color: rgb(61, 61, 116);
+    border-radius: 5px;
+    transition: 400ms;
+}
+.description:focus{
+    background-color: rgba(255, 255, 255, 0.603);
+    transform: translateY(-1px);
+}
+.create{
+    position: absolute;
+    bottom: 3em;
+    right:2em;
+    height: 3em;
+    width: 10em;
+    border-radius: 10px;
+    background-color: black;
+    color: gray;
+    font-size: large;
+    transition: all 400ms ease;
+}
+.create:hover{
+    color: yellow;
+}
+.home{
+    position: fixed;
+    top: 3em;
+    right:3em;
+    height: 3em;
+    width: 10em;
+    border-radius: 10px;
+    background-color: black;
+    color: gray;
+    font-size: large;
+    transition: all 400ms ease;
+}
+.home:hover{
+    color: yellow;
+}

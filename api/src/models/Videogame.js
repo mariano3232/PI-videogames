@@ -20,10 +20,13 @@ module.exports = (sequelize) => {
       type:DataTypes.STRING,
     },
     rating:{
-      type:DataTypes.INTEGER
+      type:DataTypes.REAL
     },
     platforms:{
       type:DataTypes.ARRAY(DataTypes.STRING)
+    },
+    image:{
+      type:DataTypes.STRING
     },
     created:{
       type:DataTypes.BOOLEAN,

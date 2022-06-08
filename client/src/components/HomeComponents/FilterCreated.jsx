@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { filterCreated } from "../../actions";
+import styles from './Select.module.css'
 
 export default function FilterCreated(){
 
@@ -13,7 +14,7 @@ export default function FilterCreated(){
 
     return(
         <div>
-            <select onChange={e=>HandleChange(e)}>
+            <select onChange={e=>HandleChange(e)} className={styles.select}>
                 <option value="all">All</option>
                 <option value="created">Created</option>
                 <option value="existent">Existent</option>

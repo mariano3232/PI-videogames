@@ -101,9 +101,10 @@ router.get('/genres',async (req,res)=>{
 })
 
 router.post('/videogame',async (req,res)=>{
-   const {name,description,released,rating,platforms,genres}=req.body
+   const {name,image,description,released,rating,platforms,genres}=req.body
    const data={
        name,
+       image,
        description,
        released,
        rating,

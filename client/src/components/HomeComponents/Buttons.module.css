@@ -1,0 +1,15 @@
+.buttons{
+    position: relative;
+    left: 12em;
+    background-color: rgb(61, 61, 116);
+    height: 40px;
+    width: 40px;
+    border-radius: 7px;
+    margin-top: 10px;
+    margin-right: 2em;
+    top:10px;
+    transition: all 400ms ease;
+}
+.buttons:hover{
+    background-color: rgb(35, 35, 95);;
+}

@@ -1,0 +1,24 @@
+.container{
+    background-color: rgb(42, 40, 40);
+    border-radius: 2%;
+    width: 400px;
+    height: 400px;
+    margin:10px;
+    float:left;
+    box-shadow: 1px 1px 5px black;
+    transition: all 400ms ease;
+}
+.container:hover{
+    box-shadow: 10px 10px 10px black;
+    transform: translateY(-20px)
+}
+.title{
+    color: white;
+    text-decoration: none;
+}
+.img{
+    width: 400px;
+   max-height: 18em;
+    border-radius: 2%;
+    min-height: 200px;
+}
