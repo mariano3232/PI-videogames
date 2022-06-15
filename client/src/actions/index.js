@@ -86,6 +86,13 @@ export function getDetails(id){
         })
     }
 }
+export function clear(){
+    return (dispatch)=>{
+        return dispatch({
+            type:'CLEAR',
+        })
+    }
+}
 export function Post(input){
     return async (dispatch)=>{
         console.log('input(action) :',input)

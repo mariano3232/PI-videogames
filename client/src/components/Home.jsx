@@ -1,7 +1,7 @@
 import React from "react";
 import { useState,useEffect } from "react";
 import { useDispatch,useSelector } from "react-redux";
-import {getGames,getGenres} from "../actions";
+import {getGames,getGenres,clear} from "../actions";
 import { Link } from "react-router-dom";
 import Card from "./HomeComponents/Card";
 import SearchBar from "./HomeComponents/SearchBar";
@@ -18,7 +18,7 @@ export default function Home(){
     const games=useSelector(state=>state.games)
     const genres=useSelector(state=>state.genres)
     const render=useSelector(state=>state.render)
-    //indeces:
+    //indices:
     const [currentPage,setCurrentPage]=useState(1)
     const gamesPerPage=15;                                  console.log('currentPage :',currentPage)
     const first=((currentPage*gamesPerPage)-gamesPerPage); console.log('first :',first)
@@ -33,6 +33,7 @@ export default function Home(){
     useEffect(()=>{
         dispatch(getGames())
         dispatch(getGenres())
+        dispatch(clear())
     },[dispatch])
 
     // console.log('games(Home) :',games)
@@ -40,12 +41,12 @@ export default function Home(){
     return(
         <div>
             <SearchBar/>
+            <Link to='/Post'><button className={styles.createButton}>Create game</button></Link>
             <header className={styles.header}>
              <Alphabetical/>
              <Rating/>
-             <FilterGenre/>
-             <FilterCreated/>
-             <Link to='/Post'><button className={styles.createButton}>Create game</button></Link>
+             <FilterGenre setPage={setPage}/>
+             <FilterCreated setPage={setPage}/>
              <button onClick={e=>{e.preventDefault(); dispatch(getGames())}} className={styles.reload}>Reload games</button>
             </header>
             {
@@ -61,8 +62,9 @@ export default function Home(){
                 })
             }
              <footer className={styles.footer}>
-            <h3 className={styles.more}> More games :</h3>
-             <Buttons allGames={games.length} setPage={setPage} gamesPerPage={gamesPerPage} className={styles.buttons}/>
+             <h3 className={styles.more}> More games :</h3>
+             <Buttons allGames={games.length} setPage={setPage} currentPage={currentPage} gamesPerPage={gamesPerPage} className={styles.buttons}/>
+             <h3 className={styles.pag}>Pag.{currentPage}</h3>
              </footer>
         </div>
     )

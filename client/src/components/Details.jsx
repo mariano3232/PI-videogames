@@ -2,13 +2,21 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch,useSelector } from "react-redux";
-import { getDetails } from "../actions";
+import { getDetails,clear } from "../actions";
 import { Link } from "react-router-dom";
 import styles from './Details.module.css'
+
+
 
 export default function Details(){
     const id=useParams().id;
     const dispatch=useDispatch();
+
+    function HandleClick(e){
+        e.preventDefault();
+        dispatch(clear)
+    }
+    
 
     useEffect(()=>{
         dispatch(getDetails(id))
@@ -18,8 +26,9 @@ export default function Details(){
     console.log('gameDetails :',game)
     
     return(
+        game.name?
         <div className={styles.container}>
-            <Link to='/Home'><button className={styles.home }>Home</button></Link>
+            <Link to='/Home'><button  className={styles.home }>Home</button></Link>
             <div/>
             <h1 className={styles.title}>{game.name}</h1>
             {
@@ -54,6 +63,11 @@ export default function Details(){
                    return <span key={e}>{e} </span>
                 })
             }
+        </div>
+        : 
+        <div>
+            <h1 className={styles.loading}>Loading...</h1>
+            <Link to='/Home'><button  className={styles.home }>Home</button></Link>
         </div>
     )
 }

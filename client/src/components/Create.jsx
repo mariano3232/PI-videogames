@@ -1,7 +1,7 @@
 import React from "react";
 import { useState,useEffect } from "react";
 import { useSelector,useDispatch } from "react-redux";
-import { getGenres, getPlatforms,Post } from "../actions";
+import { getGenres, getPlatforms, Post } from "../actions";
 import { Link } from 'react-router-dom'
 import styles from './Create.module.css'
 
@@ -32,15 +32,21 @@ export default function Create(){
 
     const [errors,setErrors]=useState({
         name:'',
+        name2:'',
         description:'',
+        description2:'',
         rating:'',
+        date:'',
+        genres:'',
+        platforms:'',
     })
 
-
+    const [submitFail,setSubmitFail]=useState(false)
     function HandleSubmit(e){
         e.preventDefault();
         if (errors.name||errors.description||errors.rating||errors.platforms||errors.genres){
-            return alert('error! please check the form again ')
+            setSubmitFail(true) 
+            return alert(' error! please check the form again ')
         }
         dispatch(Post(input));
         alert('Game created :)')
@@ -49,30 +55,26 @@ export default function Create(){
     const validate= (input)=>{
         
         let errors={}
-        let regex=/^[a-zA-Z\s]*$/g
+        let nameRegex=/^[a-zA-Z0-9 _]*$/g
         if (input.name.length===0){errors.name='Game has no name!'}
-        if (!input.name.match(regex)){errors.name='This name includes invalid characters'}
+        if (!input.name.match(nameRegex)){errors.name2='This name includes invalid characters'}
+        if (input.name.length>250){errors.name2='name is too long'}
         if (input.description.length===0){errors.description='Game needs a description'}
+        if (input.description.length>20){errors.description2='Description is too long'}
         if (input.rating<0||input.rating>5){errors.rating='rating should be a value between 0 & 5'}
+        if (typeof(input.rating)==='number'&&input.rating!==null){errors.rating='rating should be a number'}
         if (input.platforms.length===0){errors.platforms='Choose at least 1 platform'}
         if (input.genres.length===0){errors.genres='Choose at least 1 genre'}
 
         return errors;
     }
 
-    
     function HandleChange(e){
         e.preventDefault();
         setInput({
             ...input,
             [e.target.name]:e.target.value
         })
-        setErrors(
-            validate({
-                ...input,
-                [e.target.name]:e.target.value
-            })
-        )
         console.log('input :',input)
         console.log('errors :',errors)
     }
@@ -95,35 +97,38 @@ export default function Create(){
             })
         }
     }
-
     return(
         <div className={styles.container}>
             <Link to='/Home'><button className={styles.home}>Home</button></Link>
             <h1>Add a new game!</h1>
-            <label>Name :</label>
+            <label>Name : *</label>
             <input type="text" name='name' placeholder="name..." onChange={e=>HandleChange(e)} className={styles.input}/>
             {
-                errors.name?<p style={{color: "red"}}>{errors.name}</p>:<p style={{color:"green"}}>      ✔</p>
+                (errors.name&&submitFail)?<p style={{color: "red"}}>{errors.name}</p>:<h1></h1>
             }
-            <label>Image :</label>
-            <input type="text" name='image' placeholder="URL" onChange={e=>HandleChange(e)} className={styles.input}/>
+            {
+                errors.name2?<p style={{color: "red"}}>{errors.name2}</p>:<h1></h1>
+            }
             <div/>
-            <label>Description :</label>
+            <label>Description : *</label>
             <div/>
             <textarea name="description" placeholder='description...' rows='3' cols='70' onChange={e=>HandleChange(e)} className={styles.description}></textarea>
             {
-                errors.description?<p style={{color: "red"}}>{errors.description}</p>:<p style={{color:"green"}}>      ✔</p>
-            }   
+                (errors.description&&submitFail)?<p style={{color: "red"}}>{errors.description}</p>:<h1></h1>
+            }
+            {
+                errors.description2?<p style={{color: "red"}}>{errors.description2}</p>:<h1></h1>
+            }      
             <div/>
             <label>Rating :</label>
             <input type="number" name='rating' onChange={e=>HandleChange(e)} className={styles.input}/>
             {
-                errors.rating?<p style={{color: "red"}}>{errors.rating}</p>:<p style={{color:"green"}}>      ✔</p>
+                errors.rating?<p style={{color: "red"}}>{errors.rating}</p>:<h1></h1>
             }   
             <label>Release date :</label>
             <input type="date" name='released' onChange={e=>HandleChange(e)} className={styles.input}/>
             <div/>
-            <label>Genres :</label>
+            <label>Genres :*</label>
             <select name='genres' onChange={e=>HandleGenres(e)} className={styles.input}>
                 <option value="">genres</option>
                 {
@@ -133,10 +138,10 @@ export default function Create(){
                 }
             </select>
             {
-                errors.genres?<p style={{color: "red"}}>{errors.genres}</p>:<p style={{color:"green"}}>      ✔</p>
+                (errors.genres&&submitFail)?<p style={{color: "red"}}>{errors.genres}</p>:<h1></h1>
             }  
             <ul><li>{input.genres.map(e=>{return e+' '})}</li></ul>
-            <label>Platforms :</label>
+            <label>Platforms :*</label>
             <select name='platforms' onChange={e=>HandlePlatforms(e)} className={styles.input}>
                  <option value="">platforms</option>
                 {
@@ -146,19 +151,13 @@ export default function Create(){
                 }
             </select>
             {
-                errors.platforms?<p style={{color: "red"}}>{errors.platforms}</p>:<p style={{color:"green"}}>      ✔</p>
+                (errors.platforms&&submitFail)?<p style={{color: "red"}}>{errors.platforms}</p>:<h1></h1>
             }  
             <ul><li>{input.platforms.map(e=>{return e+' '})}</li></ul>
+            <label>Image :</label>
+            <input type="text" name='image' placeholder="URL" onChange={e=>HandleChange(e)} className={styles.input}/>
 
             <button onClick={(e)=>{HandleSubmit(e)}} className={styles.create}>Create!</button>
-
-
-
-            {/* {
-                platforms.map(e=>{
-                    return <img src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Gato.jpg" alt="" width='300px' />
-                })
-            } */}
         </div>
     )
 }

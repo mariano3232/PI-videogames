@@ -18,15 +18,16 @@ module.exports = (sequelize) => {
     },
     released:{
       type:DataTypes.STRING,
+      allowNull:true,
     },
     rating:{
-      type:DataTypes.REAL
+      type:DataTypes.STRING,
     },
     platforms:{
       type:DataTypes.ARRAY(DataTypes.STRING)
     },
     image:{
-      type:DataTypes.STRING
+      type:DataTypes.TEXT
     },
     created:{
       type:DataTypes.BOOLEAN,

@@ -32,6 +32,11 @@ export default function reducers(state=initialState,action){
                 ...state,
                 games:action.payload
             }
+        case 'CLEAR':
+            return{
+                ...state,
+                details:{},
+            }    
         case 'ALPHABETICAL_ORDER':
             let sorted=state.games;
             if (action.payload==="A-Z"){
