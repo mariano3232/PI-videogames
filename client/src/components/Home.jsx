@@ -20,9 +20,9 @@ export default function Home(){
     const render=useSelector(state=>state.render)
     //indices:
     const [currentPage,setCurrentPage]=useState(1)
-    const gamesPerPage=15;                                  console.log('currentPage :',currentPage)
-    const first=((currentPage*gamesPerPage)-gamesPerPage); console.log('first :',first)
-    const last=(first+gamesPerPage);                      console.log('last :',last)
+    const gamesPerPage=15;                                
+    const first=((currentPage*gamesPerPage)-gamesPerPage);
+    const last=(first+gamesPerPage);                      
     const currentGames=games.slice(first,last)
     console.log('currentGames :',currentGames)
 
@@ -36,8 +36,6 @@ export default function Home(){
         dispatch(clear())
     },[dispatch])
 
-    // console.log('games(Home) :',games)
-    // console.log('genres(Home) :',genres)
     return(
         <div>
             <SearchBar/>

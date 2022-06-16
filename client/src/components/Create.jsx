@@ -75,8 +75,6 @@ export default function Create(){
             ...input,
             [e.target.name]:e.target.value
         })
-        console.log('input :',input)
-        console.log('errors :',errors)
     }
 
     function HandleGenres(e){
