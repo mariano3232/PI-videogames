@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export function getGames(){
     return async (dispatch)=>{
-        let allGames= await axios('http://localhost:3001/videogames')
+        let allGames= await axios('/videogames')
         return dispatch({
             type:'GET_GAMES',
             payload:allGames.data
@@ -12,7 +12,7 @@ export function getGames(){
 
 export function getGenres(){
     return async (dispatch)=>{
-        let allGenres= await axios ('http://localhost:3001/genres')
+        let allGenres= await axios ('/genres')
         let allGenresClean=allGenres.data.map(e=>{return e.name})
         return dispatch({
             type:'GET_GENRES',
@@ -22,7 +22,7 @@ export function getGenres(){
 }
 export function getPlatforms(){
     return async (dispatch)=>{
-        let allGames= await axios('http://localhost:3001/videogames')
+        let allGames= await axios('/videogames')
         let uniquePlatforms=[];
         allGames?.data.map(e=>{return e.platforms}).flat().map(e=>{
             if (!uniquePlatforms.includes(e)){
@@ -37,7 +37,7 @@ export function getPlatforms(){
 }
 export function searchGame(input){
     return async (dispatch)=>{
-        let results=await axios('http://localhost:3001/videogames?name='+input)
+        let results=await axios('/videogames?name='+input)
         return dispatch({
             type:'SEARCH_GAME',
             payload:results.data
@@ -78,7 +78,7 @@ export function filterCreated(input){
 }
 export function getDetails(id){
     return async (dispatch)=>{
-        const gameData=await axios('http://localhost:3001/videogames/'+id)
+        const gameData=await axios('/videogames/'+id)
         console.log('gameDetails(action) :',gameData)
         return dispatch({
             type:'GET_DETAILS',
@@ -96,7 +96,7 @@ export function clear(){
 export function Post(input){
     return async (dispatch)=>{
         console.log('input(action) :',input)
-        const response=await axios.post('http://localhost:3001/videogame',input)
+        const response=await axios.post('/videogame',input)
         console.log('respose :',response)
         return{
             type:'POST',
