@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export function getGames(){
     return async (dispatch)=>{
-        let allGames= await axios('/videogames')
+        let allGames= await axios('/videogames').catch(function(error){console.log('error de axios :',error)})
         return dispatch({
             type:'GET_GAMES',
             payload:allGames.data
