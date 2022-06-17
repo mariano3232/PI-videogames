@@ -10,7 +10,7 @@ const apiGames= async ()=>{
     const allGames=[]
     let url='https://api.rawg.io/api/games?key='+YOUR_API_KEY;
     for (let i=0;i<5;i++){
-     let allData=await axios(url);
+     let allData=await axios(url).catch(function(error){console.log('error de axios :',error)});
      let filter=allData.data.results.map(e=>{
         return{
             id:e.id,
