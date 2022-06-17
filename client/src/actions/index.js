@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export function getGames(){
     return async (dispatch)=>{
-        let allGames= await axios.get('/videogames').catch(function(error){console.log('error de axios :',error)})
+        let allGames= await axios.get('https://mariano-videogames.herokuapp.com/videogames').catch(function(error){console.log('error de axios :',error)})
         return dispatch({
             type:'GET_GAMES',
             payload:allGames.data
