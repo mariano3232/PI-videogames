@@ -16,12 +16,12 @@ export default function Buttons({allGames,setPage,gamesPerPage,currentPage}){
             }
             {
                 numbers.map(e=>{
-                    return <button key={e} onClick={()=>setPage(e)} className={styles.buttons}>{e}</button>
+                    return <button key={e} onClick={()=>{setPage(e); window.scroll(0,-300)}} className={styles.buttons}>{e}</button>
                 })
             }
             {
             (currentPage<numbers.length)?
-            <button onClick={()=>setPage(currentPage+1)} className={styles.buttons}>next</button>
+            <button onClick={()=>{setPage(currentPage+1); window.scroll(0,-300)}} className={styles.buttons}>next</button>
             :<button className={styles.buttons} disabled>next</button>
             }
         </div>

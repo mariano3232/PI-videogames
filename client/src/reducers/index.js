@@ -77,7 +77,7 @@ export default function reducers(state=initialState,action){
             }
         }    
         case 'FILTER_BY_GENRE':
-            let filter=state.games.filter(e=>{
+            let filter=state.allGames.filter(e=>{
                return e.genres?.includes(action.payload)||e.Genres?.map(e=>{return e.name}).includes(action.payload)
             })
             if (action.payload==='all'){

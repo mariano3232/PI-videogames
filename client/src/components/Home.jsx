@@ -37,9 +37,12 @@ export default function Home(){
     },[dispatch])
 
     return(
-        <div>
-            <SearchBar/>
-            <Link to='/Post'><button className={styles.createButton}>Create game</button></Link>
+        <div className={styles.body}>
+            <div className={styles.top}>
+                <SearchBar/>
+                <Link to='/Post'><button className={styles.createButton}>Create game</button></Link>
+            </div>
+        
             <header className={styles.header}>
              <Alphabetical/>
              <Rating/>
@@ -47,7 +50,8 @@ export default function Home(){
              <FilterCreated setPage={setPage}/>
              <button onClick={e=>{e.preventDefault(); dispatch(getGames())}} className={styles.reload}>Reload games</button>
             </header>
-            {
+            <div className={styles.cards}>
+                {
                 currentGames?.map(e=>{
                    return <Card 
                      name={e.name}
@@ -59,10 +63,12 @@ export default function Home(){
                     />
                 })
             }
+            </div>
+            
              <footer className={styles.footer}>
-             <h3 className={styles.more}> More games :</h3>
-             <Buttons allGames={games.length} setPage={setPage} currentPage={currentPage} gamesPerPage={gamesPerPage} className={styles.buttons}/>
-             <h3 className={styles.pag}>Pag.{currentPage}</h3>
+                <h3 className={styles.more}> More games :</h3>
+                <Buttons allGames={games.length} setPage={setPage} currentPage={currentPage} gamesPerPage={gamesPerPage} className={styles.buttons}/>
+                <h3 className={styles.pag}>Pag.{currentPage}</h3>
              </footer>
         </div>
     )
