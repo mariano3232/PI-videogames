@@ -97,6 +97,7 @@ export default function Create(){
     }
     return(
         <div className={styles.container}>
+            <div className={styles.box}>
             <Link to='/Home'><button className={styles.home}>Home</button></Link>
             <h1>Add a new game!</h1>
             <label>Name : *</label>
@@ -156,6 +157,7 @@ export default function Create(){
             <input type="text" name='image' placeholder="URL" onChange={e=>HandleChange(e)} className={styles.input}/>
 
             <button onClick={(e)=>{HandleSubmit(e)}} className={styles.create}>Create!</button>
+            </div>
         </div>
     )
 }

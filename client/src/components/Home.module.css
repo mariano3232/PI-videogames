@@ -1,11 +1,15 @@
 
+* {
+    scroll-behavior: smooth;
+  }
 html body {
     background:url('../wallpaperflare.com_wallpaper\ 2.jpg') no-repeat center center fixed;
     background-size: cover;
+    scroll-behavior: smooth !important;
 }
-/* .body{
-    background-color: aqua;
-} */
+.body{
+    scroll-behavior: smooth !important;
+}
 
 .top{
     display: flex;
@@ -54,7 +58,7 @@ html body {
     background-color: rgb(61, 61, 116);
     border:0ch;
     border-radius: 60px;
-    margin: 0.5em;
+    margin-top: 1.5em;
     transition: all 400ms ease;
 }
 .reload:hover{
@@ -86,4 +90,9 @@ html body {
         flex-wrap: wrap;
         width: 100%;
     }
+}
+.loading{
+    margin: auto;
+    margin-bottom: 50rem;
+    margin-top: 5rem;
 }

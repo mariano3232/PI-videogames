@@ -11,6 +11,7 @@ import FilterGenre from "./HomeComponents/FilterGenre";
 import FilterCreated from "./HomeComponents/FilterCreated";
 import Buttons from "./HomeComponents/Buttons";
 import styles from './Home.module.css'
+import loading from './Icons/Loading.svg'
 
 export default function Home(){
 
@@ -51,8 +52,9 @@ export default function Home(){
              <button onClick={e=>{e.preventDefault(); dispatch(getGames())}} className={styles.reload}>Reload games</button>
             </header>
             <div className={styles.cards}>
-                {
-                currentGames?.map(e=>{
+            {
+                currentGames.length?
+                currentGames.map(e=>{
                    return <Card 
                      name={e.name}
                      image={e.image}
@@ -61,7 +63,8 @@ export default function Home(){
                      id={e.id} 
                      key={e.id}
                     />
-                })
+                }):
+                <img src={loading} alt="" className={styles.loading} />
             }
             </div>
             
