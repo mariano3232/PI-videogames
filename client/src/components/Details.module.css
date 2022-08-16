@@ -51,6 +51,15 @@
     font-size: large;
     transition: all 400ms ease;
 }
+@media (max-width: 970px){
+    .home{
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        top:13rem;
+        right:1rem;
+    }
+}
 .home:hover{
     color: yellow;
 }

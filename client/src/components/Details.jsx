@@ -65,7 +65,7 @@ export default function Details(){
                 <label>Platforms : </label>
                 {
                     game.platforms?.map(e=>{
-                    return <span key={e} className={styles.detail}>{e} </span>
+                    return <p key={e} className={styles.detail}> - {e} </p>
                     })
                 }
             </div>   

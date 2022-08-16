@@ -6,6 +6,7 @@
     margin: auto;
     margin-top: 1rem;
     width: 50%;
+    min-width: 20rem;
     box-shadow: 3px 3px 3px black;
     padding:20px
     
@@ -63,6 +64,15 @@
     color: gray;
     font-size: large;
     transition: all 400ms ease;
+}
+@media (max-width: 970px){
+    .home{
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        top:13rem;
+        right:1rem;
+    }
 }
 .home:hover{
     color: yellow;
